@@ -1,0 +1,13 @@
+Repository for joint laboratory project for the courses 
+"Advanced Software Engineering Techniques" and "Computational Lexicology, Morphology and Syntax".
+"Alexandru Ioan Cuza" University of Iasi, Faculty of Computer Science
+Computational Linguistics Master Studies
+
+Project coordinators:
+ Conf. Dr. Adrian Iftene
+ Lect. Dr. Diana Trandabat
+
+Project members:
+ Razvan-Gabriel Rotari
+ Stefan Oprea
+ Ionut Hulub
