@@ -57,12 +57,13 @@ def index(request):
     d=request.POST.dict()
     if "wordpair" in d.keys():
         q=Wordpair.objects.get(text=d["wordpair"])
-        l=toList(q.votes)
-        l[int(d["option"])]+=1
-        if allIsPeachy(l):
-            q.finished=True
-        q.votes=fromList(l)
-        q.nrvotes+=1
+        if "dontknow"not in d.keys():
+            l=toList(q.votes)
+            l[int(d["option"])]+=1
+            if allIsPeachy(l):
+                q.finished=True
+            q.votes=fromList(l)
+            q.nrvotes+=1
         if s!=None:
             s.wordpairs.add(q)
         q.save()
