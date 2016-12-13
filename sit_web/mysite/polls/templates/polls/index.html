@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+How similar are these two words?<br>
+<br>
+<b>{{word1}}</b> - <b>{{word2}}</b><br>
+<br>
+<form action = "/polls/" method="POST">
+{% csrf_token %}
+<input type="hidden" name="wordpair" value="{{wordpair}}">
+<input type="submit" name="option" value="0">
+<input type="submit" name="option" value="1">
+<input type="submit" name="option" value="2">
+<input type="submit" name="option" value="3">
+<input type="submit" name="option" value="4">
+</form>
+</body>
+</html>
+
+
+
