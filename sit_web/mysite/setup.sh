@@ -1,5 +1,5 @@
 #!/bin/sh
 python manage.py makemigrations polls
 python manage.py migrate
-sh adaugaWordpairs.sh
+sh addWordpairsToDatabase.sh
 python manage.py runserver
