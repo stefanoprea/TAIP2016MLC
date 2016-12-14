@@ -1,6 +1,8 @@
 #!/usr/bin/python
 from random import randint
 import sys,os
+from string import punctuation
+
 try:
     from nltk.corpus import wordnet
     def isNoun(t):
@@ -15,7 +17,7 @@ def randword(f,length):
     t=f.read(1)
     while t!="" and not t.isspace():
         t=f.read(1)
-    t=f.readline().strip()
+    t=f.readline().strip().strip(punctuation)
     if t!="" and isNoun(t): #numai substantive
         return t
     else:
