@@ -7,9 +7,13 @@ try:
     from nltk.corpus import wordnet
     def isNoun(t):
         return len(wordnet.synsets(t,pos=wordnet.NOUN))!=0
+    def isOther(t):
+        return len(wordnet.synsets(t,pos="var"))!=0
 except:
     def isNoun(t):
         return os.system("wordnet "+t+" -synsn >/dev/null")!=0
+    def isOther(t):
+        return os.system("wordnet "+t+" -synsv -synsa -synsr >/dev/null")!=0
 
 def randword(f,length,enc):
     pos=randint(0,length-1)
@@ -21,7 +25,7 @@ def randword(f,length,enc):
     if len(l)>0:
         t=l[randint(0,len(l)-1)]
         t=t.strip().strip(punctuation)
-        if t!="" and isNoun(t) and len(t)>4: #numai substantive
+        if t!="" and isNoun(t) and not isOther(t) and len(t)>4: #numai substantive
             return t
     return randword(f,length,enc)
 
