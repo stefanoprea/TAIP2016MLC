@@ -13,6 +13,7 @@ class Wordpair(models.Model):
     nrvotes=models.IntegerField(default=0)
     #begun=models.BooleanField(default=False)
     finished=models.BooleanField(default=False)
+    preferred=models.BooleanField(default=False)
     #date_last_voted=models.DateTimeField('date last voted')
     __str__=lambda self:self.text
 

@@ -71,15 +71,25 @@ def index(request):
     
     gotQuestion=False
     if s!=None:
-        ft=Wordpair.objects.filter(finished=False,nrvotes__gt=0).exclude(mysession__sessionkey=s.sessionkey)
+        ft=Wordpair.objects.filter(preferred=True,finished=False,nrvotes__gt=0).exclude(mysession__sessionkey=s.sessionkey)
         if len(ft):
             q=ft[randint(0,len(ft)-1)]
             gotQuestion=True
         else:
-            ft=Wordpair.objects.filter(nrvotes=0).exclude(mysession__sessionkey=s.sessionkey)
+            ft=Wordpair.objects.filter(preferred=True,nrvotes=0).exclude(mysession__sessionkey=s.sessionkey)
             if len(ft):
                 q=ft[randint(0,len(ft)-1)]
                 gotQuestion=True
+            else:
+                ft=Wordpair.objects.filter(finished=False,nrvotes__gt=0).exclude(mysession__sessionkey=s.sessionkey)
+                if len(ft):
+                    q=ft[randint(0,len(ft)-1)]
+                    gotQuestion=True
+                else:
+                    ft=Wordpair.objects.filter(nrvotes=0).exclude(mysession__sessionkey=s.sessionkey)
+                    if len(ft):
+                        q=ft[randint(0,len(ft)-1)]
+                        gotQuestion=True
     if not gotQuestion:
         ft=Wordpair.objects.all()
         if len(ft):
