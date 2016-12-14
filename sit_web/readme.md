@@ -11,7 +11,8 @@ In browserul web:
 Poti crea cu cont admin cu: python manage.py createsuperuser <br>
 Si apoi accesezi cu: 127.0.0.1:8000/admin/
 
-Pentru a crea perechi de cuvinte: python makePairs.py infile.in outfile.txt 1000
+Pentru a crea perechi de cuvinte: python makePairs.py infile.in outfile.txt 1000 utf-16<br>
+Default encoding pentru infile este utf-8
 
 Pentru a adauga perechi de cuvinte:
 - sh addWordpairsToDatabase.sh adauga perechile din toate fisierele cu extensia .txt din directorul mysite
