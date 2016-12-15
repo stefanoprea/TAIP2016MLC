@@ -1,6 +1,6 @@
 Noile perechi de cuvinte pot fi adaugate la baza de date cu preferred=True, astfel:<br>
- - download prefer.sh, prefer.py si NewRobinsonCrusoe.txt
- - sh prefer.sh NewRobinsonCrusoe.txt
+ - download prefer.sh, prefer.py si NewDefoeRobinsonCrusoe.txt
+ - sh prefer.sh NewDefoeRobinsonCrusoe.txt
  
 ----------------
 
