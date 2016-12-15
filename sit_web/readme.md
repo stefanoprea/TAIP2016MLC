@@ -1,3 +1,9 @@
+Noile perechi de cuvinte pot fi adaugate la baza de date cu preferred=True, astfel:<br>
+ - download prefer.sh, prefer.py si NewRobinsonCrusoe.txt
+ - sh prefer.sh NewRobinsonCrusoe.txt
+ 
+----------------
+
 Pentru makemigrations si migrate:
     In directorul mysite (cel care contine directorul polls)
     sh setup.sh
@@ -20,4 +26,3 @@ Pentru a adauga perechi de cuvinte:
 
 To do:
 - css
-- adauga perechi de cuvinte
