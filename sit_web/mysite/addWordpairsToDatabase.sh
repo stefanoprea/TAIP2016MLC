@@ -1,1 +1,1 @@
-python manage.py shell -c "import incarcator"
+python2 manage.py shell -c "import incarcator"
