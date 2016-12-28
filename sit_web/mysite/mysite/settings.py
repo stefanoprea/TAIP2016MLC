@@ -25,7 +25,7 @@ SECRET_KEY = 't-@zit@mlwy#az^3ux-%=p&(b4^xvdqak@9&nv(0x!yhyihn3&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["polls.razvanrotari.me", "localhost"]
 
 
 # Application definition
