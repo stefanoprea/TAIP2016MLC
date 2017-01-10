@@ -7,7 +7,7 @@ def mergePair(a,b):
     else:
         return b+"\t"+a
 
-for f in os.listdir(os.getcwd()):
+for f in os.listdir(os.getcwd()+"/perechi"):
     if f[-4:]==".txt":
         for l in open(f):
             l=l.split()
