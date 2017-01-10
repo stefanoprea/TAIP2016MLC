@@ -20,4 +20,6 @@ class Wordpair(models.Model):
 class Mysession(models.Model):
     sessionkey=models.CharField(max_length=100,default="foo")
     wordpairs=models.ManyToManyField(Wordpair)
+    username=models.CharField(max_length=1000,default="")
+    pairsDone=models.IntegerField(default=0)
 

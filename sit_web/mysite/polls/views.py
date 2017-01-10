@@ -64,8 +64,14 @@ def index(request):
                 q.finished=True
             q.votes=fromList(l)
             q.nrvotes+=1
+            if s!=None:
+                s.pairsDone+=1
+                s.save()
         if s!=None:
             s.wordpairs.add(q)
+            if d["username"]:s.username=d["username"]
+            s.save()
+            
         q.save()
     q=None
     
@@ -99,5 +105,5 @@ def index(request):
 
          
     word1,word2=splitPair(q.text)
-    return render(request,"polls/index.html",{"word1":word1,"word2":word2,"wordpair":q.text})
+    return render(request,"polls/index.html",{"word1":word1,"word2":word2,"wordpair":q.text,"username":s.username if s!=None else "", "pairsDone":str(s.pairsDone) if s!=None else "I don't know how many" })
 
