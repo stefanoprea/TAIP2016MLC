@@ -9,7 +9,7 @@ def mergePair(a,b):
 
 for f in os.listdir(os.getcwd()+"/perechi"):
     if f[-4:]==".txt":
-        for l in open(f):
+        for l in open("./perechi/"+f):
             l=l.split()
             if len(l)>=2:
                 t=mergePair(l[0],l[1])
