@@ -4,6 +4,9 @@ from django.template import loader
 from .models import Wordpair,Mysession
 from random import randint
 
+def xyzzy(k):
+    return "".join(k.split()).lower()
+
 def toList(text):
     l=[]
     for i in text.split(","):
@@ -56,6 +59,10 @@ def index(request):
  
     d=request.POST.dict()
     if "wordpair" in d.keys():
+        if "logout" in d.keys():
+            request.session.flush()
+            s=None
+            d["dontknow"]=True
         q=Wordpair.objects.get(text=d["wordpair"])
         if "dontknow"not in d.keys():
             l=toList(q.votes)
@@ -69,7 +76,7 @@ def index(request):
                 s.save()
         if s!=None:
             s.wordpairs.add(q)
-            if d["username"]:s.username=d["username"]
+            if xyzzy(d["username"]):s.username=xyzzy(d["username"])
             s.save()
             
         q.save()
@@ -105,5 +112,7 @@ def index(request):
 
          
     word1,word2=splitPair(q.text)
-    return render(request,"polls/index.html",{"word1":word1,"word2":word2,"wordpair":q.text,"username":s.username if s!=None else "", "pairsDone":str(s.pairsDone) if s!=None else "I don't know how many" })
+    return render(request,"polls/index.html",{"word1":word1,"word2":word2,"wordpair":q.text,"username":s.username if s!=None else "", 
+    "USERNAME": s.username if s!=None else "UNKNOWN!!!",
+    "pairsDone":str(s.pairsDone) if s!=None else "I don't know how many" })
 
