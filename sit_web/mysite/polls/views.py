@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.utils.encoding import smart_text
 from .models import Wordpair,Mysession
 from random import randint
 
@@ -115,4 +116,26 @@ def index(request):
     return render(request,"polls/index.html",{"word1":word1,"word2":word2,"wordpair":q.text,"username":s.username if s!=None else "", 
     "USERNAME": s.username if s!=None else "UNKNOWN!!!",
     "pairsDone":str(s.pairsDone) if s!=None else "I don't know how many" })
+
+def statistics(request):
+    session_list = Mysession.objects.only("username", "pairsDone").filter(username__isnull=False)
+
+    stats = {}
+    for item in session_list:
+        if item.username not in stats:
+            stats[item.username] = 0
+        stats[item.username] += item.pairsDone
+    html = u"""<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+"""
+    for item in stats.items():
+	username = smart_text(item[0])
+	count = item[1]
+        html += u"{username}:{count}</br>".format(username=username, count=count)
+    html += u"""</body>
+</html>
+"""
+    return HttpResponse(html)
 
