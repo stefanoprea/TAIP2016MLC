@@ -38,16 +38,20 @@ class wordVectors():
     """
     from gloveEvaluator import wordVectors
     x=wordVectors("glove.6B.50d.txt") #load word vector file into RAM
+    #x=wordVectors("vector.txt",cased=True) pentru vectori cased
     x.evalWordpair("winter","summer")
     x.evalWordpair("snow","icecream")
     x.evalWordpair("copou","sleigh") #None
     del x #free RAM
     """
-    def __init__(self,filename):
+    def __init__(self,filename,cased=False):
         self.W,self.vocab,self.ivocab=loadVectors(filename)
-    def evalWordpair(self,foo,bar,tolower=True):
+        self.cased=cased
+    def evalWordpair(self,foo,bar,tolower=None):
         """Evaluate cosine distance between foo and bar."""
         W,vocab=self.W,self.vocab
+        if tolower==None:
+            tolower= not self.cased
         if tolower:
             foo,bar=foo.lower(),bar.lower()
         if foo not in vocab or bar not in vocab:
