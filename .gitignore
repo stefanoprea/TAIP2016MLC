@@ -101,3 +101,5 @@ ENV/
 .ropeproject
 
 # End of https://www.gitignore.io/api/django,python
+
+*.300d.txt
